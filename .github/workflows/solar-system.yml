@@ -11,6 +11,7 @@ env:
     MONGO_URI: 'mongodb+srv://supercluster.d83jj.mongodb.net/superData'
     MONGO_USERNAME: ${{vars.MONGO_USERNAME}}
     MONGO_PASSWORD: ${{secrets.MONGO_PASSWORD}}
+    DOCKER_TAG: ${{ github.sha }}
 
 jobs:
     unit-testing:
@@ -113,7 +114,7 @@ jobs:
                 -e MONGO_URI=$MONGO_URI \
                 -e MONGO_USERNAME=$MONGO_USERNAME \
                 -e MONGO_PASSWORD=$MONGO_PASSWORD \
-                ${{ env.DOCKERHUB_USERNAME }}/solar-system:${{ github.sha }}
+                ${{ env.DOCKERHUB_USERNAME }}/solar-system:${{ env.DOCKER_TAG }}
             
             export IP=$(docker inspect -f '{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' solar-system-app)
             echo $IP
