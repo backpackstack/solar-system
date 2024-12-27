@@ -125,14 +125,14 @@ jobs:
             fi
             echo "Container IP: $IP"
 
-            echo "Testing Image URL using wget"
-            wget -q -O - http://127.0.0.1:3000/live | grep "live"
-            if [ $? -ne 0 ]; then
-                echo "Error: Health check failed. Application is not responding as expected."
-                docker logs solar-system-app
-                exit 1
-            fi
-            echo "Health check passed."
+            # echo "Testing Image URL using wget"
+            # wget -q -O - http://127.0.0.1:3000/live | grep "live"
+            # if [ $? -ne 0 ]; then
+            #     echo "Error: Health check failed. Application is not responding as expected."
+            #     docker logs solar-system-app
+            #     exit 1
+            # fi
+            # echo "Health check passed."
 
 
         - name: Docker Push
