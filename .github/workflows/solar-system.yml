@@ -110,6 +110,7 @@ jobs:
           run: |
             docker images
             docker run --name solar-system-app -d  \
+            docker pull $DOCKERHUB_USERNAME/solar-system:$DOCKER_TAG \
                 -p 3000:3000 \
                 -e MONGO_URI=$MONGO_URI \
                 -e MONGO_USERNAME=$MONGO_USERNAME \
